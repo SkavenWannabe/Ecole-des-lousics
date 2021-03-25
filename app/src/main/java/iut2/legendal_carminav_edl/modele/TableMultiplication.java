@@ -1,4 +1,4 @@
-package iut2.legendal_carminav_edl.tableMultiplicationData;
+package iut2.legendal_carminav_edl.modele;
 
 import java.util.ArrayList;
 import java.util.List;

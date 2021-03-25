@@ -1,7 +1,6 @@
 package iut2.legendal_carminav_edl;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.transition.Slide;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +9,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import iut2.legendal_carminav_edl.tableMultiplicationData.Multiplication;
-import iut2.legendal_carminav_edl.tableMultiplicationData.TableMultiplication;
+import iut2.legendal_carminav_edl.modele.Multiplication;
+import iut2.legendal_carminav_edl.modele.TableMultiplication;
 
 public class TableMultiplicationActivity extends AppCompatActivity {
 
