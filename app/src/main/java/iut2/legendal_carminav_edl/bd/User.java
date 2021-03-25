@@ -1,19 +1,26 @@
 package iut2.legendal_carminav_edl.bd;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-@Entity
+@Entity (
+        indices = {@Index(value = {"math_level"}, unique = true)},
+        primaryKeys = {"nom", "prenom"}
+)
 public class User implements Serializable {
 
-    @PrimaryKey()
+    @ColumnInfo(name = "nom")
+    @NonNull
     private String nom;
 
-    @PrimaryKey()
+    @ColumnInfo(name = "prenom")
+    @NonNull
     private String prenom;
 
     @ColumnInfo(name = "math_level")
