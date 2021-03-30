@@ -6,8 +6,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseClient mDb;
     private UserAdapter adapter;
 
-    private ListView listUser;
+    private ListView userListView;
+    private List<User> userList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +31,21 @@ public class MainActivity extends AppCompatActivity {
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
-        listUser = findViewById(R.id.listUser);
+        userListView = findViewById(R.id.listUser);
 
         adapter = new UserAdapter(this, new ArrayList<User>());
-        listUser.setAdapter(adapter);
 
+        userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast msg = Toast.makeText(MainActivity.this, "Connecté avec " + userList.get(position).getNomComplet(), Toast.LENGTH_SHORT);
+                msg.show();
+                Intent selectionExerciceIntent = new Intent(MainActivity.this, SelectionExerciceActivity.class);
+                startActivity(selectionExerciceIntent);
+            }
+        });
+
+        userListView.setAdapter(adapter);
     }
 
 
@@ -53,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
                 adapter.clear();
                 adapter.addAll(users);
+                userList.addAll(users);
 
                 adapter.notifyDataSetChanged();
             }

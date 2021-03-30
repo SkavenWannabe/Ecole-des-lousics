@@ -45,6 +45,10 @@ public class User implements Serializable {
         this.prenom = prenom;
     }
 
+    public String getNomComplet() {
+        return getPrenom() + " " + getNom();
+    }
+
     public int getMath_level() {
         return math_level;
     }

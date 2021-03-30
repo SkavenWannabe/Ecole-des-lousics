@@ -27,9 +27,10 @@ public class UserAdapter extends ArrayAdapter<User> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View rowView = inflater.inflate(R.layout.template_user, parent, false);
 
-        Button userButton = (Button) rowView.findViewById(R.id.user_button);
+//        Button userButton = (Button) rowView.findViewById(R.id.user_button);
+        TextView userButton = (TextView) rowView.findViewById(R.id.user_button);
 
-        userButton.setText(user.getNom() + " " + user.getPrenom());
+        userButton.setText(user.getNomComplet());
 
         return rowView;
     }
