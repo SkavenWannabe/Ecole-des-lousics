@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LegendalcarminavEDL">
+        <activity android:name=".creation_compte"></activity>
         <activity android:name=".SelectionExerciceActivity"></activity>
         <activity android:name=".TableMultiplicationActivity" />
         <activity android:name=".MainActivity">
