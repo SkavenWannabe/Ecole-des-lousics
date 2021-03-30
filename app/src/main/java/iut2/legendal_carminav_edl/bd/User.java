@@ -10,7 +10,6 @@ import androidx.room.PrimaryKey;
 import java.io.Serializable;
 
 @Entity (
-        indices = {@Index(value = {"math_level"}, unique = true)},
         primaryKeys = {"nom", "prenom"}
 )
 public class User implements Serializable {
