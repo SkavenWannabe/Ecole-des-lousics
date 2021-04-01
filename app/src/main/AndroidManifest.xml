@@ -10,8 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LegendalcarminavEDL">
-        <activity android:name=".CreationCompte"></activity>
-        <activity android:name=".SelectionExerciceActivity"></activity>
+        <activity android:name=".ChoixNiveauActivity"></activity>
+        <activity android:name=".CreationCompte" />
+        <activity android:name=".SelectionExerciceActivity" />
         <activity android:name=".TableMultiplicationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
