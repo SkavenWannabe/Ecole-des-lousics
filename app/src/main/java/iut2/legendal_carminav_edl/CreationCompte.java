@@ -23,7 +23,7 @@ public class CreationCompte extends AppCompatActivity {
         btn_retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(CreationCompte.this, MainActivity.class);
             }
         });
 
