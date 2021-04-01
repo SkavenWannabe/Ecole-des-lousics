@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -34,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
         userListView = findViewById(R.id.listUser);
 
         adapter = new UserAdapter(this, new ArrayList<User>());
+
+        Button btn_creationCompte = (Button) findViewById(R.id.btn_creationCompte);
+
+        btn_creationCompte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreationCompte.class);
+                startActivity(intent);
+            }
+        });
 
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

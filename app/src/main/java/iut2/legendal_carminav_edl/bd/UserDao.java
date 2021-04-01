@@ -16,7 +16,7 @@ public interface UserDao {
     @Query("SELECT * FROM user")
     List<User> getAll();
 
-    @Insert
+    @Insert()
     void insert(User user);
 
     @Insert
