@@ -54,13 +54,13 @@ public class DatabaseClient {
             super.onCreate(db);
 
             //
-            db.execSQL("INSERT INTO user VALUES(\"nom\", \"prénom\", 1);");
-            db.execSQL("INSERT INTO user VALUES(\"Legendre\", \"Alexandre\", 3);");
-            db.execSQL("INSERT INTO user VALUES(\"Carminati\", \"Vincenzo\", 2);");
-            db.execSQL("INSERT INTO user VALUES(\"Sammier\", \"Eliott\", 200);");
-            db.execSQL("INSERT INTO user VALUES(\"Loraux\", \"Elian\", 0);");
+            db.execSQL("INSERT INTO user VALUES(\"nom\", \"prénom\", 1, 2, 6, 7, 5);");
+            db.execSQL("INSERT INTO user VALUES(\"Legendre\", \"Alexandre\", 3, 0, 2, 4, 6);");
+            db.execSQL("INSERT INTO user VALUES(\"Carminati\", \"Vincenzo\", 2, 2, 3, 1, 0);");
+            db.execSQL("INSERT INTO user VALUES(\"Sammier\", \"Eliott\", 200, 9, 7, 51, 6);");
+            db.execSQL("INSERT INTO user VALUES(\"Loraux\", \"Elian\", 0, 5, 1, 2, 0);");
 //            db.execSQL("INSERT INTO user VALUES(\"Corbalan\", \"Clément\", -8);");
-            db.execSQL("INSERT INTO user VALUES(\"Fontana\", \"Théo\", 2);");
+            db.execSQL("INSERT INTO user VALUES(\"Fontana\", \"Théo\", 2, 3, 2, 4, 5);");
 
         }
     };
