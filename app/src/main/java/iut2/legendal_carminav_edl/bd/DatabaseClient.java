@@ -64,4 +64,14 @@ public class DatabaseClient {
 
         }
     };
+
+    private void createMatieres() {
+        Question q1 = new Question("Mathématiques", 1,  "5+9", "14", "15", "16");
+        Question q2 = new Question("Mathématiques", 1,  "8+7", "15", "16", "14");
+        Question q3 = new Question("Mathématiques", 1,  "6+4", "10", "64", "14");
+        Question q4 = new Question("Mathématiques", 1,  "3+3", "6", "9", "5");
+        Question q5 = new Question("Mathématiques", 1,  "7+3", "9", "10", "11");
+
+    }
+
 }
