@@ -12,6 +12,8 @@
         android:theme="@style/Theme.LegendalcarminavEDL">
         <activity android:name=".ExerciceActivity"></activity>
         <activity android:name=".ChoixNiveauActivity" />
+        <activity android:name=".ErreurReponse"></activity>
+        <activity android:name=".FelicitationReponse" />
         <activity android:name=".CreationCompte" />
         <activity android:name=".SelectionExerciceActivity" />
         <activity android:name=".TableMultiplicationActivity" />
