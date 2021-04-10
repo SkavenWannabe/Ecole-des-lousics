@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,17 +58,21 @@ public class CreationCompte extends AppCompatActivity {
         class SaveUser extends AsyncTask<Void, Void, User> {
             @Override
             protected User doInBackground(Void... voids) {
-                User user = new User();
-                user.setNom(nom);
-                user.setPrenom(prenom);
-                user.setCulture_level(1);
-                user.setMath_add_level(1);
-                user.setMath_div_level(1);
-                user.setMath_mul_level(1);
-                user.setMath_sub_level(1);
+                User user;
+                System.out.println(String.valueOf(((user = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().userDao().getUser(nom, prenom)) == null)));
+                if((user = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().userDao().getUser(nom, prenom)) == null){
+                    user = new User();
+                    user.setNom(nom);
+                    user.setPrenom(prenom);
+                    user.setCulture_level(1);
+                    user.setMath_add_level(1);
+                    user.setMath_div_level(1);
+                    user.setMath_mul_level(1);
+                    user.setMath_sub_level(1);
 
-                DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().userDao().insert(user);
-
+                    DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().userDao().insert(user);
+                }
+                System.out.println(user.getPrenom() + " " + user.getCulture_level());
                 return user;
             }
 
@@ -83,6 +88,10 @@ public class CreationCompte extends AppCompatActivity {
         }
 
         SaveUser su = new SaveUser();
-        su.execute();
+        try {
+            su.execute().get();
+        } catch (Exception e) {
+
+        }
     }
 }
