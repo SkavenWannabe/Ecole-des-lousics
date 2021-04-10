@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import iut2.legendal_carminav_edl.bd.Matiere;
+import iut2.legendal_carminav_edl.bd.User;
+import iut2.legendal_carminav_edl.modele.VGlobal;
+
 public class ChoixNiveauActivity extends AppCompatActivity {
 
     public static final String NB_NIVEAU_KEY = "nb_niveau_key";
@@ -15,6 +19,11 @@ public class ChoixNiveauActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_niveau);
+
+        Matiere matiere = ((VGlobal) this.getApplication()).getMatiere();
+        if (matiere != null) {
+            setTitle(matiere.getNom());
+        }
 
         LinearLayout mainLinear = findViewById(R.id.choix_niveau_linear);
 

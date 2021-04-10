@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import iut2.legendal_carminav_edl.bd.DatabaseClient;
 import iut2.legendal_carminav_edl.bd.User;
+import iut2.legendal_carminav_edl.modele.VGlobal;
 
 public class CreationCompte extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class CreationCompte extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_compte);
+        setTitle("Création de compte");
 
         Button btn_retour = findViewById(R.id.btn_retour);
         Button btn_insc = findViewById(R.id.btn_insc);
@@ -73,9 +75,10 @@ public class CreationCompte extends AppCompatActivity {
             protected  void onPostExecute(User user) {
                 super.onPostExecute(user);
 
+                ((VGlobal) CreationCompte.this.getApplication()).setUtilisateur(user);
+                Toast.makeText(CreationCompte.this, "Connecté avec " + user.getNomComplet(), Toast.LENGTH_SHORT).show();
                 setResult(RESULT_OK);
                 finish();
-                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
             }
         }
 

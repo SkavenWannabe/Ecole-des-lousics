@@ -13,6 +13,7 @@ import java.util.List;
 
 import iut2.legendal_carminav_edl.bd.Matiere;
 import iut2.legendal_carminav_edl.bd.User;
+import iut2.legendal_carminav_edl.modele.VGlobal;
 
 public class MatiereAdapter extends ArrayAdapter<Matiere> {
 
@@ -35,6 +36,7 @@ public class MatiereAdapter extends ArrayAdapter<Matiere> {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ChoixNiveauActivity.class);
                 intent.putExtra(ChoixNiveauActivity.NB_NIVEAU_KEY, matiere.getNbNiveaux());
+                ((VGlobal) MatiereAdapter.this.getContext().getApplicationContext()).setMatiere(matiere);
                 getContext().startActivity(intent);
 
             }
