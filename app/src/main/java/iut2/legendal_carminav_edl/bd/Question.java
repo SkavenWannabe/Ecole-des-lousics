@@ -40,6 +40,59 @@ public class Question implements Serializable {
     @ColumnInfo(name = "mauvaise_reponse2")
     private String mauvaiseReponse2;
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public String getMatiere() {
+        return matiere;
+    }
+
+    public void setMatiere(String matiere) {
+        this.matiere = matiere;
+    }
+
+    public int getNbNiveau() {
+        return nbNiveau;
+    }
+
+    public void setNbNiveau(int nbNiveau) {
+        this.nbNiveau = nbNiveau;
+    }
+
+    public String getEnonce() {
+        return enonce;
+    }
+
+    public void setEnonce(String enonce) {
+        this.enonce = enonce;
+    }
+
+    public String getBonneReponse() {
+        return bonneReponse;
+    }
+
+    public void setBonneReponse(String bonneReponse) {
+        this.bonneReponse = bonneReponse;
+    }
+
+    public String getMauvaiseReponse1() {
+        return mauvaiseReponse1;
+    }
+
+    public void setMauvaiseReponse1(String mauvaiseReponse1) {
+        this.mauvaiseReponse1 = mauvaiseReponse1;
+    }
+
+    public String getMauvaiseReponse2() {
+        return mauvaiseReponse2;
+    }
+
+    public void setMauvaiseReponse2(String mauvaiseReponse2) {
+        this.mauvaiseReponse2 = mauvaiseReponse2;
+    }
 }

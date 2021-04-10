@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -16,11 +17,12 @@ import java.util.List;
 
 import iut2.legendal_carminav_edl.bd.DatabaseClient;
 import iut2.legendal_carminav_edl.bd.User;
+import iut2.legendal_carminav_edl.modele.VGlobal;
 
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseClient mDb;
-    private UserAdapter adapter;
+    private ArrayAdapter<User> adapter;
 
     private ListView userListView;
     private List<User> userList = new ArrayList<>();
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         userListView = findViewById(R.id.listUser);
 
-        adapter = new UserAdapter(this, new ArrayList<User>());
+        adapter = new ArrayAdapter<>(this, R.layout.template_user, R.id.user_button, new ArrayList<User>());
 
         Button btn_creationCompte = (Button) findViewById(R.id.btn_creationCompte);
 
@@ -49,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast msg = Toast.makeText(MainActivity.this, "Connecté avec " + userList.get(position).getNomComplet(), Toast.LENGTH_SHORT);
-                msg.show();
+                User user = userList.get(position);
+                logUser(user.getNom(), user.getPrenom());
                 Intent selectionExerciceIntent = new Intent(MainActivity.this, SelectionExerciceActivity.class);
                 startActivity(selectionExerciceIntent);
             }
@@ -84,6 +86,28 @@ public class MainActivity extends AppCompatActivity {
 
         GetUsers gu = new GetUsers();
         gu.execute();
+    }
+
+    private void logUser(String nom, String prenom) {
+        class LogUser extends AsyncTask<Void, Void, User> {
+
+            @Override
+            protected User doInBackground(Void... voids) {
+                return mDb.getAppDatabase().userDao().getUser(nom, prenom);
+            }
+
+            @Override
+            protected void onPostExecute(User user) {
+                super.onPostExecute(user);
+
+                Toast msg = Toast.makeText(MainActivity.this, "Connecté avec " + user.getNomComplet(), Toast.LENGTH_SHORT);
+                ((VGlobal) MainActivity.this.getApplication()).setUtilisateur(user);
+                msg.show();
+            }
+        }
+
+        LogUser lu = new LogUser();
+        lu.execute();
     }
 
     @Override

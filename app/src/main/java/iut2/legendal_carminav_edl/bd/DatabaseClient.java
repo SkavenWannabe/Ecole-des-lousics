@@ -62,10 +62,17 @@ public class DatabaseClient {
 //            db.execSQL("INSERT INTO user VALUES(\"Corbalan\", \"Clément\", -8);");
             db.execSQL("INSERT INTO user VALUES(\"Fontana\", \"Théo\", 2, 3, 2, 4, 5);");
 
+            db.execSQL("INSERT INTO matieres VALUES(\"Mathématiques\", 3)");
+            db.execSQL("INSERT INTO matieres VALUES(\"Culture Générale\", 2)");
+
         }
     };
 
     private void createMatieres() {
+        Matiere maths = new Matiere("Mathématiques", 3);
+        Matiere cultureG = new Matiere("Culture Générale", 2);
+        getAppDatabase().matiereDao().insertAll(maths, cultureG);
+
         Question q1 = new Question("Mathématiques", 1,  "5+9", "14", "15", "16");
         Question q2 = new Question("Mathématiques", 1,  "8+7", "15", "16", "14");
         Question q3 = new Question("Mathématiques", 1,  "6+4", "10", "64", "14");

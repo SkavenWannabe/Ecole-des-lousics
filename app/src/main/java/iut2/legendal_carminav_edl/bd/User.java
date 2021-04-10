@@ -100,4 +100,9 @@ public class User implements Serializable {
     public void setCulture_level(int culture_level) {
         this.culture_level = culture_level;
     }
+
+    @Override
+    public String toString() {
+        return getNomComplet();
+    }
 }
