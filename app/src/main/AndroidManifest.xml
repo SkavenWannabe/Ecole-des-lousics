@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LegendalcarminavEDL">
-        <activity android:name=".FelicitationReponse"></activity>
+        <activity android:name=".ErreurReponse"></activity>
+        <activity android:name=".FelicitationReponse" />
         <activity android:name=".ChoixNiveauActivity" />
         <activity android:name=".CreationCompte" />
         <activity android:name=".SelectionExerciceActivity" />
