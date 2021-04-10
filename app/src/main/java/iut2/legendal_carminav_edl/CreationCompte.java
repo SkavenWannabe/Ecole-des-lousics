@@ -38,13 +38,14 @@ public class CreationCompte extends AppCompatActivity {
             public void onClick(View v) {
                 saveUser();
                 Intent intent = new Intent(CreationCompte.this, SelectionExerciceActivity.class);
+                finish();
                 startActivity(intent);
             }
         });
     }
 
     private void saveUser() {
-        EditText inp_nom = findViewById(R.id.inp_nom);
+        EditText inp_nom =findViewById(R.id.inp_nom);
         EditText inp_prenom = findViewById(R.id.inp_prenom);
 
         final String nom = inp_nom.getText().toString();

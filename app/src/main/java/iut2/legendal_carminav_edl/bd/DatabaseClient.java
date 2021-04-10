@@ -65,20 +65,14 @@ public class DatabaseClient {
             db.execSQL("INSERT INTO matieres VALUES(\"Mathématiques\", 3)");
             db.execSQL("INSERT INTO matieres VALUES(\"Culture Générale\", 2)");
 
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"5+9\", \"14\", \"15\", \"16\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"8+7\", \"15\", \"16\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"6+4\", \"10\", \"64\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"3+3\", \"6\", \"9\", \"5\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"7+3\", \"9\", \"10\", \"11\")");
+
         }
     };
 
-    private void createMatieres() {
-        Matiere maths = new Matiere("Mathématiques", 3);
-        Matiere cultureG = new Matiere("Culture Générale", 2);
-        getAppDatabase().matiereDao().insertAll(maths, cultureG);
-
-        Question q1 = new Question("Mathématiques", 1,  "5+9", "14", "15", "16");
-        Question q2 = new Question("Mathématiques", 1,  "8+7", "15", "16", "14");
-        Question q3 = new Question("Mathématiques", 1,  "6+4", "10", "64", "14");
-        Question q4 = new Question("Mathématiques", 1,  "3+3", "6", "9", "5");
-        Question q5 = new Question("Mathématiques", 1,  "7+3", "9", "10", "11");
-
-    }
 
 }
