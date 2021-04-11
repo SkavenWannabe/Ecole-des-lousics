@@ -41,7 +41,8 @@ public class TableMultiplicationActivity extends AppCompatActivity {
                 int nbErreurs = 0;
 
                 for (int i = 0; i < tableMultiplication.getNbMultiplications(); i++) {
-                    if (adapter.getItem(i).isCorrect()) {
+                    Multiplication multiplication = adapter.getItem(i);
+                    if (multiplication.getResultat() != multiplication.getReponse()) {
                         nbErreurs++;
                     }
                 }
