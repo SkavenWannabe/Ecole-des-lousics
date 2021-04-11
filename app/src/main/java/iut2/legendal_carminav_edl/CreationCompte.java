@@ -60,8 +60,9 @@ public class CreationCompte extends AppCompatActivity {
             @Override
             protected User doInBackground(Void... voids) {
                 User user;
-                System.out.println(String.valueOf(((user = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().userDao().getUser(nom, prenom)) == null)));
                 if((user = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().userDao().getUser(nom, prenom)) == null){
+                    //si l'utilisateur n'existe pas en base, on en crée un nouveau et on l'initialise
+                    //si il existe on l'affecte à user
                     user = new User();
                     user.setNom(nom);
                     user.setPrenom(prenom);
@@ -71,9 +72,10 @@ public class CreationCompte extends AppCompatActivity {
                     user.setMath_mul_level(1);
                     user.setMath_sub_level(1);
 
+                    //on insert le nouvel utilisateur en base
                     DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().userDao().insert(user);
                 }
-                System.out.println(user.getPrenom() + " " + user.getCulture_level());
+                //on retourne l'utilisateur
                 return user;
             }
 
