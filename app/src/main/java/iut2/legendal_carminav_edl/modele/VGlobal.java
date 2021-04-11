@@ -10,6 +10,7 @@ public class VGlobal extends Application {
     private int level = 1;
     private User utilisateur;
     private Matiere matiere;
+    private int niveau;
 
     public boolean isExerciceMath() {
         return exercice_math;
@@ -41,5 +42,13 @@ public class VGlobal extends Application {
 
     public void setMatiere(Matiere matiere) {
         this.matiere = matiere;
+    }
+
+    public int getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(int niveau) {
+        this.niveau = niveau;
     }
 }

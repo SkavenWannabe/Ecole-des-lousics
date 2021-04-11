@@ -32,6 +32,8 @@ public class SelectionExerciceActivity extends AppCompatActivity {
         User user = ((VGlobal) this.getApplication()).getUtilisateur();
         if (user != null) {
             setTitle(user.getNomComplet());
+        } else {
+            setTitle("Anonyme");
         }
 
         ListView matiereListView = findViewById(R.id.listview_matiere);

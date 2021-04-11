@@ -14,31 +14,39 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="TextView"
         android:textSize="@dimen/tailleText"
-        tools:text="Erreur(s) !!!" />
+        android:text="Erreur(s) !!!" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/erreur_nberreurs"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="TextView"
-        android:textSize="@dimen/tailleText"
-        tools:text="Nombre d'erreur(s) : " />
+        android:text="Nombre d'erreur(s) : " />
+
+        <TextView
+            android:id="@+id/nombre_erreur"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btn_level"
+        android:id="@+id/erreur_btn_corriger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:text="Corriger mes réponses" />
+        android:text="Corriger mes réponses" />
 
     <Button
-        android:id="@+id/btn_exo"
+        android:id="@+id/erreur_choisir_exo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:text="Choisir un autre exercice" />
+        android:text="Choisir un autre exercice" />
 </LinearLayout>

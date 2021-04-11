@@ -15,9 +15,10 @@ import java.io.Serializable;
 )
 public class Matiere implements Serializable, Parcelable {
 
-    public Matiere(String nom, int nbNiveaux) {
+    public Matiere(String nom, int nbNiveaux, int inputType) {
         this.nom = nom;
         this.nbNiveaux = nbNiveaux;
+        this.inputType = inputType;
     }
 
     @NonNull
@@ -27,10 +28,14 @@ public class Matiere implements Serializable, Parcelable {
     @ColumnInfo(name = "nb_niveaux")
     private int nbNiveaux;
 
+    @ColumnInfo(name = "input_type")
+    private int inputType;
+
 
     protected Matiere(Parcel in) {
         nom = in.readString();
         nbNiveaux = in.readInt();
+        inputType = in.readInt();
     }
 
     public static final Creator<Matiere> CREATOR = new Creator<Matiere>() {
@@ -61,6 +66,14 @@ public class Matiere implements Serializable, Parcelable {
         this.nbNiveaux = nbNiveaux;
     }
 
+    public int getInputType() {
+        return inputType;
+    }
+
+    public void setInputType(int inputType) {
+        this.inputType = inputType;
+    }
+
     @Override
     public String toString() {
         return nom;
@@ -75,5 +88,6 @@ public class Matiere implements Serializable, Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(nom);
         dest.writeInt(nbNiveaux);
+        dest.writeInt(inputType);
     }
 }

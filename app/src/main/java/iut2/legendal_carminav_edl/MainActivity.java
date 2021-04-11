@@ -39,13 +39,26 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<>(this, R.layout.template_user, R.id.user_button, new ArrayList<User>());
 
-        Button btn_creationCompte = (Button) findViewById(R.id.btn_creationCompte);
+        Button btnCreationCompte = (Button) findViewById(R.id.btn_creationCompte);
+        Button btnAnonyme = findViewById(R.id.main_btn_anonyme);
 
-        btn_creationCompte.setOnClickListener(new View.OnClickListener() {
+        btnCreationCompte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CreationCompte.class);
                 startActivity(intent);
+            }
+        });
+
+        btnAnonyme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //On set User à null
+                //Il faudra faire attention plus tard : user peut être nul
+                ((VGlobal) MainActivity.this.getApplication()).setUtilisateur(null);
+                Toast.makeText(MainActivity.this, "Connecté en anonyme ", Toast.LENGTH_SHORT).show();
+                Intent selectionExerciceIntent = new Intent(MainActivity.this, SelectionExerciceActivity.class);
+                startActivity(selectionExerciceIntent);
             }
         });
 

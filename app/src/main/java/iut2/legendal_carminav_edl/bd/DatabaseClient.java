@@ -2,6 +2,7 @@ package iut2.legendal_carminav_edl.bd;
 
 
 import android.content.Context;
+import android.view.inputmethod.EditorInfo;
 
 import androidx.annotation.NonNull;
 import androidx.room.Room;
@@ -62,14 +63,34 @@ public class DatabaseClient {
 //            db.execSQL("INSERT INTO user VALUES(\"Corbalan\", \"Clément\", -8);");
             db.execSQL("INSERT INTO user VALUES(\"Fontana\", \"Théo\", 2, 3, 2, 4, 5);");
 
-            db.execSQL("INSERT INTO matieres VALUES(\"Mathématiques\", 3)");
-            db.execSQL("INSERT INTO matieres VALUES(\"Culture Générale\", 2)");
+            db.execSQL("INSERT INTO matieres VALUES(\"Mathématiques\", 3, " + EditorInfo.TYPE_CLASS_NUMBER + ")");
+            db.execSQL("INSERT INTO matieres VALUES(\"Culture Générale\", 2, " + EditorInfo.TYPE_CLASS_TEXT + ")");
 
             db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"5+9\", \"14\", \"15\", \"16\")");
             db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"8+7\", \"15\", \"16\", \"14\")");
             db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"6+4\", \"10\", \"64\", \"14\")");
             db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"3+3\", \"6\", \"9\", \"5\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"7+3\", \"9\", \"10\", \"11\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"7+3\", \"10\", \"10\", \"11\")");
+
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"15+39\", \"54\", \"15\", \"16\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"48+37\", \"85\", \"16\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"16+24\", \"40\", \"64\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"33+33\", \"66\", \"9\", \"5\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"27+53\", \"80\", \"10\", \"11\")");
+
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"56+64\", \"120\", \"15\", \"16\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"85+35\", \"120\", \"16\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"76+25\", \"101\", \"64\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"96+16\", \"112\", \"9\", \"5\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"35+49\", \"84\", \"10\", \"11\")");
+
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 1, \"Capitale de France\", \"Paris\", \"15\", \"16\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 1, \"15e lettre de l'alphabet\", \"o\", \"16\", \"14\")");
+
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 2, \"Qu'est-ce qui entourait les châteaux-forts au moyen-âge ?\", \"Douves\", \"15\", \"16\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 2, \"Quel est le plus grand océan du monde ?\", \"Pacifique\", \"16\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 2, \"Quel fleuve passe par Paris ?\", \"Seine\", \"16\", \"14\")");
+
 
         }
     };

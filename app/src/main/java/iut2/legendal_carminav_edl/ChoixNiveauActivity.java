@@ -15,7 +15,6 @@ import java.util.List;
 import iut2.legendal_carminav_edl.bd.DatabaseClient;
 import iut2.legendal_carminav_edl.bd.Matiere;
 import iut2.legendal_carminav_edl.bd.Question;
-import iut2.legendal_carminav_edl.bd.User;
 import iut2.legendal_carminav_edl.modele.Exercice;
 import iut2.legendal_carminav_edl.modele.VGlobal;
 
@@ -31,15 +30,12 @@ public class ChoixNiveauActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choix_niveau);
 
         Matiere matiere = ((VGlobal) this.getApplication()).getMatiere();
-        if (matiere != null) {
-            setTitle(matiere.getNom());
-        }
+        setTitle(matiere.getNom());
+        int nbNiveaux = matiere.getNbNiveaux();
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
         LinearLayout mainLinear = findViewById(R.id.choix_niveau_linear);
-
-        int nbNiveaux = getIntent().getIntExtra(NB_NIVEAU_KEY, 0);
 
         for (int i = 1; i < nbNiveaux + 1; ++i) {
             LinearLayout linearTemplate = (LinearLayout) getLayoutInflater().inflate(R.layout.template_niveau, null);
@@ -52,6 +48,7 @@ public class ChoixNiveauActivity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    ((VGlobal) getApplication()).setNiveau(finalI);
                     sendExercice(matiere, finalI);
                 }
             });

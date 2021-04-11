@@ -9,26 +9,23 @@
     tools:context=".FelicitationReponse">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/win_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="TextView"
         android:textSize="@dimen/tailleText"
-        tools:text="Félicitations !!" />
+        android:text="Félicitations !!" />
 
     <Button
-        android:id="@+id/btn_level"
+        android:id="@+id/win_niveau_suivant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:text="Niveau suivant" />
+        android:text="Niveau suivant" />
 
     <Button
-        android:id="@+id/btn_exo"
+        android:id="@+id/win_autre_exo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:text="Choisir un autre exercice" />
+        android:text="Choisir un autre exercice" />
 </LinearLayout>

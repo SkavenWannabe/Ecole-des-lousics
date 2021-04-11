@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import iut2.legendal_carminav_edl.bd.DatabaseClient;
 import iut2.legendal_carminav_edl.bd.Matiere;
 import iut2.legendal_carminav_edl.bd.Question;
-import iut2.legendal_carminav_edl.bd.User;
 import iut2.legendal_carminav_edl.modele.Exercice;
 import iut2.legendal_carminav_edl.modele.VGlobal;
 
@@ -42,15 +42,22 @@ public class ExerciceActivity extends AppCompatActivity {
         Button boutonSuivant = findViewById(R.id.exercice_suivant);
         EditText reponseUser = findViewById(R.id.exercice_reponse);
 
+        Matiere matiere = ((VGlobal) getApplication()).getMatiere();
+        reponseUser.setInputType(matiere.getInputType());
+
         boutonPrecedent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText reponseUser = findViewById(R.id.exercice_reponse);
+                exercice.setReponse(reponseUser.getText().toString());
+                reponseUser.setText("");
 
                 if (exercice.getNumeroQuestionActive() == exercice.getNbQuestions()) {
                     boutonSuivant.setText("Suivant");
+                    boutonSuivant.setTextColor(0xFF000000);
                 }
 
-                questionPrecedente();
+                exercice.questionPrecedente();
                 updateExercice();
             }
         });
@@ -58,12 +65,28 @@ public class ExerciceActivity extends AppCompatActivity {
         boutonSuivant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                questionSuivante();
 
-                if (exercice.getNumeroQuestionActive() == exercice.getNbQuestions()) {
+                EditText reponseUser = findViewById(R.id.exercice_reponse);
+                exercice.setReponse(reponseUser.getText().toString());
+                reponseUser.setText("");
+
+                if (exercice.getNumeroQuestionActive() == exercice.getNbQuestions() - 1) {
                     boutonSuivant.setText("Terminer");
-
+                    boutonSuivant.setTextColor(0xFFF44336);
+                    exercice.questionSuivante();
+                } else if (exercice.getNumeroQuestionActive() == exercice.getNbQuestions()) {
                     //TODO : Terminer exercice
+                    int nbErreurs = calculNbErreurs();
+                    if (nbErreurs != 0) {
+                        Intent intent = new Intent(ExerciceActivity.this, ErreurReponse.class);
+                        intent.putExtra(ErreurReponse.NB_ERREURS_KEY, nbErreurs);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(ExerciceActivity.this, FelicitationReponse.class);
+                        startActivity(intent);
+                    }
+                } else {
+                    exercice.questionSuivante();
                 }
 
                 updateExercice();
@@ -93,20 +116,15 @@ public class ExerciceActivity extends AppCompatActivity {
 
     }
 
-    private void questionSuivante() {
-        EditText reponseUser = findViewById(R.id.exercice_reponse);
-        exercice.setReponse(reponseUser.getText().toString());
-        reponseUser.setText("");
+    private int calculNbErreurs() {
+        int nbErreurs = 0;
+        for (Question q : exercice.getQuestionList()) {
+            if (!q.getResponseUser().equalsIgnoreCase(q.getBonneReponse())) {
+                nbErreurs++;
+            }
+        }
 
-        exercice.questionSuivante();
-    }
-
-    private void questionPrecedente() {
-        EditText reponseUser = findViewById(R.id.exercice_reponse);
-        exercice.setReponse(reponseUser.getText().toString());
-        reponseUser.setText("");
-
-        exercice.questionPrecedente();
+        return nbErreurs;
     }
 
 }

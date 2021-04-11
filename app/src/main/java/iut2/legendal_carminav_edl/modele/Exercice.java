@@ -70,6 +70,10 @@ public class Exercice implements Parcelable {
         return questionList.size();
     }
 
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
     public Question getQuestion(int nbQuestion) {
         return questionList.get(nbQuestion - 1);
     }
