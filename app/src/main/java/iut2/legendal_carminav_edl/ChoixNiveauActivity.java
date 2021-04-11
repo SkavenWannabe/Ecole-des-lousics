@@ -35,6 +35,7 @@ public class ChoixNiveauActivity extends AppCompatActivity {
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
+        Button btnTableMul = findViewById(R.id.niveau_btn_tmul);
         LinearLayout mainLinear = findViewById(R.id.choix_niveau_linear);
 
         for (int i = 1; i < nbNiveaux + 1; ++i) {
@@ -54,6 +55,18 @@ public class ChoixNiveauActivity extends AppCompatActivity {
             });
 
             mainLinear.addView(linearTemplate);
+        }
+
+        if (matiere.getNom().equals("Mathématiques")) {
+            btnTableMul.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ChoixNiveauActivity.this, TableMultiplicationActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            btnTableMul.setVisibility(View.VISIBLE);
         }
     }
 

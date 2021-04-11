@@ -2,47 +2,58 @@ package iut2.legendal_carminav_edl;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import iut2.legendal_carminav_edl.modele.Multiplication;
 import iut2.legendal_carminav_edl.modele.TableMultiplication;
 
 public class TableMultiplicationActivity extends AppCompatActivity {
 
+    private TableMultiplicationAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_multiplication);
 
-        LinearLayout linear = findViewById(R.id.table_linear);
-
-        TableMultiplication tableMultiplication = new TableMultiplication(8, 10);
-        for (Multiplication multiplication : tableMultiplication.getMultiplications()) {
-            LinearLayout linearTemplate = (LinearLayout) getLayoutInflater().inflate(R.layout.template_calcul, null);
-            linearTemplate.setHorizontalGravity(17);
-
-            TextView calcul = linearTemplate.findViewById(R.id.template_calcul);
-            calcul.setText(multiplication.getOperande1() + "*" + multiplication.getOperande2() + " = ");
-
-
-            linear.addView(linearTemplate);
-        }
-
+        ListView tableMulListView = findViewById(R.id.tmul_listview);
         Button btnValider = findViewById(R.id.btn_valider);
+
+        TableMultiplication tableMultiplication = new TableMultiplication(10);
+        setTitle("Table de " + tableMultiplication.getNumero());
+
+        adapter = new TableMultiplicationAdapter(this, tableMultiplication.getMultiplications());
+        tableMulListView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (Multiplication multiplication : tableMultiplication.getMultiplications()) {
-                    LinearLayout linearTemplate = (LinearLayout) getLayoutInflater().inflate(R.layout.template_calcul, null);
+                int nbErreurs = 0;
 
-                    EditText resultat = linearTemplate.findViewById(R.id.template_resultat);
-                    //TODO : Calculer le nombre d'erreurs
+                for (int i = 0; i < tableMultiplication.getNbMultiplications(); i++) {
+                    if (adapter.getItem(i).isCorrect()) {
+                        nbErreurs++;
+                    }
+                }
+
+                if (nbErreurs == 0) {
+                    Intent intent = new Intent(TableMultiplicationActivity.this, FelicitationReponse.class);
+                    finish();
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(TableMultiplicationActivity.this, ErreurReponse.class);
+                    intent.putExtra(ErreurReponse.NB_ERREURS_KEY, nbErreurs);
+                    startActivity(intent);
                 }
             }
         });
