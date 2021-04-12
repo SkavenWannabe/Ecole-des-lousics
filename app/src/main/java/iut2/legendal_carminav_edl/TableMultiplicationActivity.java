@@ -25,12 +25,15 @@ public class TableMultiplicationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_multiplication);
 
+        //Récupération des View
         ListView tableMulListView = findViewById(R.id.tmul_listview);
         Button btnValider = findViewById(R.id.btn_valider);
 
+        //Instanciation de la table de multiplication
         TableMultiplication tableMultiplication = new TableMultiplication(10);
         setTitle("Table de " + tableMultiplication.getNumero());
 
+        //Adapter & cie
         adapter = new TableMultiplicationAdapter(this, tableMultiplication.getMultiplications());
         tableMulListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();

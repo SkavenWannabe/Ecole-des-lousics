@@ -27,7 +27,6 @@ public class ErreurReponse extends AppCompatActivity {
         btn_exo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO : adapter ce boutton lorsque l'activité sera dévelloper
                 Intent intent = new Intent(ErreurReponse.this, ChoixNiveauActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

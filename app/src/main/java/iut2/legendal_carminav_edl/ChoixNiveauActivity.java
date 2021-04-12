@@ -29,15 +29,17 @@ public class ChoixNiveauActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_niveau);
 
+        //Récupération des View
+        Button btnTableMul = findViewById(R.id.niveau_btn_tmul);
+        LinearLayout mainLinear = findViewById(R.id.choix_niveau_linear);
+
+        mDb = DatabaseClient.getInstance(getApplicationContext());
+
         Matiere matiere = ((VGlobal) this.getApplication()).getMatiere();
         setTitle(matiere.getNom());
         int nbNiveaux = matiere.getNbNiveaux();
 
-        mDb = DatabaseClient.getInstance(getApplicationContext());
-
-        Button btnTableMul = findViewById(R.id.niveau_btn_tmul);
-        LinearLayout mainLinear = findViewById(R.id.choix_niveau_linear);
-
+        //Création des boutons de niveau
         for (int i = 1; i < nbNiveaux + 1; ++i) {
             LinearLayout linearTemplate = (LinearLayout) getLayoutInflater().inflate(R.layout.template_niveau, null);
             linearTemplate.setHorizontalGravity(17);
@@ -57,6 +59,7 @@ public class ChoixNiveauActivity extends AppCompatActivity {
             mainLinear.addView(linearTemplate);
         }
 
+        //On ajoute le bouton des tables de multiplication si c'est des Maths
         if (matiere.getNom().equals("Mathématiques")) {
             btnTableMul.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,6 +73,7 @@ public class ChoixNiveauActivity extends AppCompatActivity {
         }
     }
 
+    //Envoie l'exercice séléctionné et démarre l'activité d'exercice
     private void sendExercice(Matiere matiere, int nbNiveau) {
         class GetExercice extends AsyncTask<Void, Void, List<Question>> {
 

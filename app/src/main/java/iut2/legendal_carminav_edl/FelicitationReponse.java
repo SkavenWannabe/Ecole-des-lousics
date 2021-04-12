@@ -35,7 +35,6 @@ public class FelicitationReponse extends AppCompatActivity {
         btnAutreExo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO : adapter ce boutton lorsque l'activité sera dévelloper
                 Intent intent = new Intent(FelicitationReponse.this, ChoixNiveauActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -47,7 +46,6 @@ public class FelicitationReponse extends AppCompatActivity {
             public void onClick(View v) {
                 Matiere matiere = ((VGlobal) FelicitationReponse.this.getApplication()).getMatiere();
                 int nbNiveau = ((VGlobal) FelicitationReponse.this.getApplication()).getNiveau();
-                System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA " + nbNiveau);
                 if (nbNiveau == matiere.getNbNiveaux()) {
                     Intent intent = new Intent(FelicitationReponse.this, SelectionExerciceActivity.class);
                     Toast.makeText(FelicitationReponse.this, "Vous avez terminé tous les niveaux !", Toast.LENGTH_LONG).show();

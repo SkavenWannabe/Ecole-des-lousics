@@ -36,11 +36,10 @@ public class MainActivity extends AppCompatActivity {
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
         userListView = findViewById(R.id.listUser);
-
-        adapter = new ArrayAdapter<>(this, R.layout.template_user, R.id.user_button, new ArrayList<User>());
-
         Button btnCreationCompte = (Button) findViewById(R.id.btn_creationCompte);
         Button btnAnonyme = findViewById(R.id.main_btn_anonyme);
+
+        adapter = new ArrayAdapter<>(this, R.layout.template_user, R.id.user_button, new ArrayList<User>());
 
         btnCreationCompte.setOnClickListener(new View.OnClickListener() {
             @Override

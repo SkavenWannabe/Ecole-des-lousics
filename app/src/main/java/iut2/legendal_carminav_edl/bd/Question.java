@@ -15,13 +15,11 @@ import java.io.Serializable;
 )
 public class Question implements Serializable {
 
-    public Question(String matiere, int nbNiveau, String enonce, String bonneReponse, String mauvaiseReponse1, String mauvaiseReponse2) {
+    public Question(String matiere, int nbNiveau, String enonce, String bonneReponse) {
         this.matiere = matiere;
         this.nbNiveau = nbNiveau;
         this.enonce = enonce;
         this.bonneReponse = bonneReponse;
-        this.mauvaiseReponse1 = mauvaiseReponse1;
-        this.mauvaiseReponse2 = mauvaiseReponse2;
     }
 
     @NonNull
@@ -36,12 +34,6 @@ public class Question implements Serializable {
 
     @ColumnInfo(name = "bonne_reponse")
     private String bonneReponse;
-
-    @ColumnInfo(name = "mauvaise_reponse1")
-    private String mauvaiseReponse1;
-
-    @ColumnInfo(name = "mauvaise_reponse2")
-    private String mauvaiseReponse2;
 
     @Ignore
     private String responseUser;
@@ -76,22 +68,6 @@ public class Question implements Serializable {
 
     public void setBonneReponse(String bonneReponse) {
         this.bonneReponse = bonneReponse;
-    }
-
-    public String getMauvaiseReponse1() {
-        return mauvaiseReponse1;
-    }
-
-    public void setMauvaiseReponse1(String mauvaiseReponse1) {
-        this.mauvaiseReponse1 = mauvaiseReponse1;
-    }
-
-    public String getMauvaiseReponse2() {
-        return mauvaiseReponse2;
-    }
-
-    public void setMauvaiseReponse2(String mauvaiseReponse2) {
-        this.mauvaiseReponse2 = mauvaiseReponse2;
     }
 
     public String getResponseUser() {

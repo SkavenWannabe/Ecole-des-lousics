@@ -34,16 +34,16 @@ public class ExerciceActivity extends AppCompatActivity {
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
-        this.exercice = getIntent().getParcelableExtra(EXERCICE_KEY);
-
-        updateExercice();
-
+        //Récupération des view
         Button boutonPrecedent = findViewById(R.id.exercice_precedent);
         Button boutonSuivant = findViewById(R.id.exercice_suivant);
         EditText reponseUser = findViewById(R.id.exercice_reponse);
 
         Matiere matiere = ((VGlobal) getApplication()).getMatiere();
         reponseUser.setInputType(matiere.getInputType());
+
+        this.exercice = getIntent().getParcelableExtra(EXERCICE_KEY);
+        updateExercice();
 
         boutonPrecedent.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +75,6 @@ public class ExerciceActivity extends AppCompatActivity {
                     boutonSuivant.setTextColor(0xFFF44336);
                     exercice.questionSuivante();
                 } else if (exercice.getNumeroQuestionActive() == exercice.getNbQuestions()) {
-                    //TODO : Terminer exercice
                     int nbErreurs = calculNbErreurs();
                     if (nbErreurs != 0) {
                         Intent intent = new Intent(ExerciceActivity.this, ErreurReponse.class);
@@ -108,7 +107,6 @@ public class ExerciceActivity extends AppCompatActivity {
 
         enonce.setText(exercice.getQuestion(numQuestionActive).getEnonce());
         String reponseUser = exercice.getQuestion(numQuestionActive).getResponseUser();
-        System.out.println(reponseUser);
         if (reponseUser != null) {
             reponseText.setText(reponseUser);
         }

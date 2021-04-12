@@ -55,41 +55,39 @@ public class DatabaseClient {
             super.onCreate(db);
 
             //
-            db.execSQL("INSERT INTO user VALUES(\"nom\", \"prénom\", 1, 2, 6, 7, 5);");
             db.execSQL("INSERT INTO user VALUES(\"Legendre\", \"Alexandre\", 3, 0, 2, 4, 6);");
             db.execSQL("INSERT INTO user VALUES(\"Carminati\", \"Vincenzo\", 2, 2, 3, 1, 0);");
             db.execSQL("INSERT INTO user VALUES(\"Sammier\", \"Eliott\", 200, 9, 7, 51, 6);");
             db.execSQL("INSERT INTO user VALUES(\"Loraux\", \"Elian\", 0, 5, 1, 2, 0);");
-//            db.execSQL("INSERT INTO user VALUES(\"Corbalan\", \"Clément\", -8);");
             db.execSQL("INSERT INTO user VALUES(\"Fontana\", \"Théo\", 2, 3, 2, 4, 5);");
 
             db.execSQL("INSERT INTO matieres VALUES(\"Mathématiques\", 3, " + EditorInfo.TYPE_CLASS_NUMBER + ")");
             db.execSQL("INSERT INTO matieres VALUES(\"Culture Générale\", 2, " + EditorInfo.TYPE_CLASS_TEXT + ")");
 
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"5+9\", \"14\", \"15\", \"16\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"8+7\", \"15\", \"16\", \"14\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"6+4\", \"10\", \"64\", \"14\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"3+3\", \"6\", \"9\", \"5\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"7+3\", \"10\", \"10\", \"11\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"5+9\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"8+7\", \"15\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"6+4\", \"10\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"3+3\", \"6\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 1, \"7+3\", \"10\")");
 
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"15+39\", \"54\", \"15\", \"16\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"48+37\", \"85\", \"16\", \"14\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"16+24\", \"40\", \"64\", \"14\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"33+33\", \"66\", \"9\", \"5\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"27+53\", \"80\", \"10\", \"11\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"15+39\", \"54\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"48+37\", \"85\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"16+24\", \"40\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"33+33\", \"66\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 2, \"27+53\", \"80\")");
 
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"56+64\", \"120\", \"15\", \"16\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"85+35\", \"120\", \"16\", \"14\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"76+25\", \"101\", \"64\", \"14\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"96+16\", \"112\", \"9\", \"5\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"35+49\", \"84\", \"10\", \"11\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"56+64\", \"120\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"85+35\", \"120\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"76+25\", \"101\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"96+16\", \"112\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Mathématiques\", 3, \"35+49\", \"84\")");
 
-            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 1, \"Capitale de France\", \"Paris\", \"15\", \"16\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 1, \"15e lettre de l'alphabet\", \"o\", \"16\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 1, \"Capitale de France\", \"Paris\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 1, \"15e lettre de l'alphabet\", \"o\")");
 
-            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 2, \"Qu'est-ce qui entourait les châteaux-forts au moyen-âge ?\", \"Douves\", \"15\", \"16\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 2, \"Quel est le plus grand océan du monde ?\", \"Pacifique\", \"16\", \"14\")");
-            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 2, \"Quel fleuve passe par Paris ?\", \"Seine\", \"16\", \"14\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 2, \"Qu'est-ce qui entourait les châteaux-forts au moyen-âge ?\", \"Douves\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 2, \"Quel est le plus grand océan du monde ?\", \"Pacifique\")");
+            db.execSQL("INSERT INTO questions VALUES(\"Culture Générale\", 2, \"Quel fleuve passe par Paris ?\", \"Seine\")");
 
 
         }
